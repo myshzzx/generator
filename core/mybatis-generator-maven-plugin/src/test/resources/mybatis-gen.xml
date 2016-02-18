@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+				PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+				"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 数据库驱动 -->
+	<!--<classPathEntry-->
+					<!--location="F:/chens_new/mybatis-generator/drivers/mysql-connector-java-5.1.37.jar"/>-->
+	<classPathEntry
+					location="D:/alPrj/mybatis-generator/drivers/ojdbc14-10.2.0.3.jar"/>
+
+	<context id="t" targetRuntime="MyBatis3">
+
+		<property name="ignoreQualifiersAtRuntime" value="true"/>
+		<property name="DBType" value="oracle"/>
+
+		<plugin type="mysh.mybatis.plugin.PaginationPlugin"/>
+		<plugin type="mysh.mybatis.plugin.Num20ToLongPlugin"/>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+
+		<!-- 数据库配置 -->
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+		                connectionURL="jdbc:oracle:thin:@192.168.1.101:1521:orcl"
+		                userId="um4a" password="um4avguirt12s">
+		</jdbcConnection>
+
+		<!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+		<!--connectionURL="jdbc:mysql://mysqldb:3306/wmmgrm1" userId="wmmgrm1"-->
+		<!--password="wmmgrm1@qwe23css6fxza">-->
+		<!--</jdbcConnection>-->
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false"/>
+		</javaTypeResolver>
+
+		<!--  model配置 -->
+		<javaModelGenerator targetPackage="com.ai.umauthor.server.model"
+		                    targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+
+		<!-- dao配置 -->
+		<sqlMapGenerator targetPackage="com.ai.umauthor.server.model"
+		                 targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<!--<javaClientGenerator type="XMLMAPPER"-->
+		<javaClientGenerator type="XMLMAPPER"
+		                     targetPackage="com.ai.umauthor.server.mapper"
+		                     targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+
+		<!--tables below-->
+
+		<table tableName="UM_OPERATOR" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="temp_org_name" value="String"/>
+		</table>
+
+		<table tableName="UM_DICTITEM" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_DOMAIN" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_MENU" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_OPERATE_LOG" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+
+
+		<table tableName="UM_OPERATOR2MENU" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_OPERATOR2STATION" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_ORG" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_STATIONTYPE" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_STATION" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_STATION2MENU" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_STATION2STATIONTYPE" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="UM_STATION_GROUP" schema="">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+
+	</context>
+</generatorConfiguration>

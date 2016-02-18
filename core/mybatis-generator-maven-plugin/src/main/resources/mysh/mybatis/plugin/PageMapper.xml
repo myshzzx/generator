@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pageMapper">
+	<!--oracle-->
+  <sql id="head">
+	  <if test="limitStart != null and limitStart >=0" >
+  	SELECT * FROM ( SELECT A_.*, ROWNUM RN FROM  (
+	  </if>
+  </sql>
+	<sql id="tail">
+		<if test="limitStart != null and limitStart >=0" >
+		) A_ WHERE ROWNUM &lt;= #{limitEnd}) WHERE RN &gt; #{limitStart}
+		</if>
+	</sql>
+
+	<!--mysql-->
+	<!--<sql id="head">-->
+	<!--</sql>-->
+	<!--<sql id="tail">-->
+		<!--<if test="limitStart != null and limitStart >=0" >-->
+			<!--limit ${limitStart}, ${limitPageSize}-->
+		<!--</if>-->
+	<!--</sql>-->
+
+</mapper>

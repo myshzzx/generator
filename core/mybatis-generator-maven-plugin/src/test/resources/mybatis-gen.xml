@@ -7,7 +7,7 @@
 	<!--<classPathEntry-->
 					<!--location="F:/chens_new/mybatis-generator/drivers/mysql-connector-java-5.1.37.jar"/>-->
 	<classPathEntry
-					location="D:/alPrj/mybatis-generator/drivers/ojdbc14-10.2.0.3.jar"/>
+					location="D:/alPrj/dbDrivers/ojdbc14-10.2.0.3.jar"/>
 
 	<context id="t" targetRuntime="MyBatis3">
 
@@ -16,6 +16,7 @@
 
 		<plugin type="mysh.mybatis.plugin.PaginationPlugin"/>
 		<plugin type="mysh.mybatis.plugin.Num20ToLongPlugin"/>
+		<plugin type="mysh.mybatis.plugin.TableColGenPlugin"/>
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
 		<commentGenerator>

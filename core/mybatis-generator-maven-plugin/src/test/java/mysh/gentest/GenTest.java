@@ -18,4 +18,15 @@ public class GenTest {
 		ShellRunner.main(new String[]{"-configfile", file, "-overwrite"});
 	}
 
+	@Test
+	public void genWmMgr() throws IOException, ClassNotFoundException {
+		String file = "D:\\OtherProj\\mybatis-generator\\core\\mybatis-generator-maven-plugin\\src\\test\\resources\\gen-wm-mgr.xml";
+		ShellRunner.main(new String[]{"-configfile", file, "-overwrite"});
+	}
+	@Test
+	public void genWmUser() throws IOException, ClassNotFoundException {
+		String file = "D:\\OtherProj\\mybatis-generator\\core\\mybatis-generator-maven-plugin\\src\\test\\resources\\gen-wm-user.xml";
+		ShellRunner.main(new String[]{"-configfile", file, "-overwrite"});
+	}
+
 }

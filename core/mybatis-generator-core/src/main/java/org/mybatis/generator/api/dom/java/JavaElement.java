@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -198,25 +198,5 @@ public abstract class JavaElement {
      */
     public void setStatic(boolean isStatic) {
         this.isStatic = isStatic;
-    }
-    
-    /**
-     * Helper method to resolve type names.
-     * 
-     * @param sb the string buffer
-     * @param compilationUnit the compilation unit
-     * @param fqjt the type
-     */
-    public static final void addTypeName(StringBuilder sb, CompilationUnit compilationUnit, FullyQualifiedJavaType fqjt) {
-        if(fqjt != null) {
-            if(!fqjt.isExplicitlyImported() 
-                    || compilationUnit == null 
-                    || fqjt.getPackageName().equals(compilationUnit.getType().getPackageName()) 
-                    || compilationUnit.getImportedTypes().contains(new FullyQualifiedJavaType(fqjt.getFullyQualifiedNameWithoutTypeParameters()))) {
-                sb.append(fqjt.getShortName());
-            } else {
-                sb.append(fqjt.getFullyQualifiedName());
-            }
-        }
     }
 }

@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -224,7 +224,7 @@ public class InnerClass extends JavaElement {
 
         if (superClass != null) {
             sb.append(" extends "); //$NON-NLS-1$
-            addTypeName(sb, compilationUnit, superClass);
+            sb.append(JavaDomUtils.calculateTypeName(compilationUnit, superClass));
         }
 
         if (superInterfaceTypes.size() > 0) {
@@ -238,7 +238,7 @@ public class InnerClass extends JavaElement {
                     comma = true;
                 }
 
-                addTypeName(sb, compilationUnit, fqjt);
+                sb.append(JavaDomUtils.calculateTypeName(compilationUnit, fqjt));
             }
         }
 

@@ -10,8 +10,10 @@
       </topic>
       <topic href="html/eclipseui/releasenotes.html" label="Release Notes">
       </topic>
-      <topic href="html/eclipseui/buildingFromSVN.html" label="Building from SVN">
+      <topic href="html/eclipseui/buildingFromSource.html" label="Building from Source">
       </topic>
       <topic href="html/eclipseui/manualTesting.html" label="Manual Test Scripts">
+      </topic>
+      <topic href="html/eclipseui/publishing.html" label="Publishing a New Version">
       </topic>
 </toc>

@@ -22,11 +22,9 @@
 
   <bannerLeft>
     <name>MyBatis Generator</name>
-    <src>images/logo.png</src>
-    <alt>MyBatis logo</alt>
     <href>index.html</href>
   </bannerLeft>
-  
+
   <body>
     <menu name="User's Guide">
       <item href="index.html" name="Introduction" />
@@ -37,6 +35,7 @@
         <item href="running/runningWithAnt.html" name="With Ant" />
         <item href="running/runningWithMaven.html" name="With Maven" />
         <item href="running/runningWithJava.html" name="With Java" />
+        <item href="running/runningWithEclipse.html" name="In Eclipse" />
       </item>
       <item href="afterRunning.html" name="Tasks After Running MyBatis Generator" />
       <item href="migratingFromIbator.html" name="Migrating from Ibator" />
@@ -46,6 +45,7 @@
         <item href="configreference/columnOverride.html" name="&amp;lt;columnOverride&amp;gt;" />
         <item href="configreference/columnRenamingRule.html" name="&amp;lt;columnRenamingRule&amp;gt;" />
         <item href="configreference/commentGenerator.html" name="&amp;lt;commentGenerator&amp;gt;" />
+        <item href="configreference/connectionFactory.html" name="&amp;lt;connectionFactory&amp;gt;" />
         <item href="configreference/context.html" name="&amp;lt;context&amp;gt;" />
         <item href="configreference/generatedKey.html" name="&amp;lt;generatedKey&amp;gt;" />
         <item href="configreference/generatorConfiguration.html" name="&amp;lt;generatorConfiguration&amp;gt;" />

@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.mybatis.generator</groupId>
     <artifactId>mybatis-generator</artifactId>
-    <version>1.3.3-SNAPSHOT</version>
+    <version>1.3.4-SNAPSHOT</version>
   </parent>
   <artifactId>mybatis-generator-systests-domtests</artifactId>
 
@@ -111,7 +111,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore></ignore>
+                    <ignore />
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -134,4 +134,5 @@
       <version>0.9.10</version>
     </dependency>
   </dependencies>
+  <description>Tests for the Java DOM classes.  Generates Java classes and fails if the classes won't compile.</description>
 </project>

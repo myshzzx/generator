@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.generator.api.CommentGenerator;
+import org.mybatis.generator.api.ConnectionFactory;
 import org.mybatis.generator.api.FullyQualifiedTable;
 import org.mybatis.generator.api.JavaFormatter;
 import org.mybatis.generator.api.Plugin;
@@ -37,13 +38,13 @@ import org.mybatis.generator.codegen.ibatis2.IntrospectedTableIbatis2Java5Impl;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3SimpleImpl;
 import org.mybatis.generator.config.CommentGeneratorConfiguration;
+import org.mybatis.generator.config.ConnectionFactoryConfiguration;
 import org.mybatis.generator.config.Context;
 import org.mybatis.generator.config.PluginConfiguration;
 import org.mybatis.generator.config.JavaTypeResolverConfiguration;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.config.TableConfiguration;
 import org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl;
-import org.mybatis.generator.internal.util.StringUtility;
 
 /**
  * This class creates the different objects needed by the generator.
@@ -117,7 +118,6 @@ public class ObjectFactory {
                 return clazz;
             } catch (Throwable e) {
                 // ignore - fail safe below
-                ;
             }
         }
         
@@ -305,6 +305,28 @@ public class ObjectFactory {
         return answer;
     }
 
+    public static ConnectionFactory createConnectionFactory(Context context) {
+
+        ConnectionFactoryConfiguration config = context
+                .getConnectionFactoryConfiguration();
+        ConnectionFactory answer;
+
+        String type;
+        if (config == null || config.getConfigurationType() == null) {
+            type = JDBCConnectionFactory.class.getName();
+        } else {
+            type = config.getConfigurationType();
+        }
+
+        answer = (ConnectionFactory) createInternalObject(type);
+
+        if (config != null) {
+            answer.addConfigurationProperties(config.getProperties());
+        }
+
+        return answer;
+    }
+
     /**
      * Creates a new Object object.
      *
@@ -314,7 +336,7 @@ public class ObjectFactory {
      */
     public static JavaFormatter createJavaFormatter(Context context) {
         String type = context.getProperty(PropertyRegistry.CONTEXT_JAVA_FORMATTER);
-        if (!StringUtility.stringHasValue(type)) {
+        if (!stringHasValue(type)) {
             type = DefaultJavaFormatter.class.getName();
         }
 
@@ -334,7 +356,7 @@ public class ObjectFactory {
      */
     public static XmlFormatter createXmlFormatter(Context context) {
         String type = context.getProperty(PropertyRegistry.CONTEXT_XML_FORMATTER);
-        if (!StringUtility.stringHasValue(type)) {
+        if (!stringHasValue(type)) {
             type = DefaultXmlFormatter.class.getName();
         }
 

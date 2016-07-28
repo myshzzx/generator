@@ -231,6 +231,10 @@ public class FullyQualifiedJavaType implements
 
         return sb.toString();
     }
+    
+    public String getShortNameWithoutTypeArguments() {
+        return baseShortName;
+    }
 
     /*
      * (non-Javadoc)
@@ -631,5 +635,9 @@ public class FullyQualifiedJavaType implements
      */
     public boolean isArray() {
         return isArray;
+    }
+
+    public List<FullyQualifiedJavaType> getTypeArguments() {
+        return typeArguments;
     }
 }

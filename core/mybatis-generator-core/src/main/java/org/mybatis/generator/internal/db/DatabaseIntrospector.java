@@ -26,6 +26,7 @@ import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -600,6 +601,19 @@ public class DatabaseIntrospector {
 
         ResultSet rs = databaseMetaData.getColumns(localCatalog, localSchema,
                 localTableName, null);
+        
+        boolean supportsIsAutoIncrement = false;
+        boolean supportsIsGeneratedColumn = false;
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int colCount = rsmd.getColumnCount();
+        for (int i = 1; i <= colCount; i++) {
+            if ("IS_AUTOINCREMENT".equals(rsmd.getColumnName(i))) { //$NON-NLS-1$
+                supportsIsAutoIncrement = true;
+            }
+            if ("IS_GENERATEDCOLUMN".equals(rsmd.getColumnName(i))) { //$NON-NLS-1$
+                supportsIsGeneratedColumn = true;
+            }
+        }
 
         while (rs.next()) {
             IntrospectedColumn introspectedColumn = ObjectFactory
@@ -615,8 +629,13 @@ public class DatabaseIntrospector {
             introspectedColumn.setRemarks(rs.getString("REMARKS")); //$NON-NLS-1$
             introspectedColumn.setDefaultValue(rs.getString("COLUMN_DEF")); //$NON-NLS-1$
             
-            introspectedColumn.setAutoIncrement("YES".equals(rs.getString("IS_AUTOINCREMENT"))); //$NON-NLS-1$ //$NON-NLS-2$
-            introspectedColumn.setGeneratedColumn("YES".equals(rs.getString("IS_GENERATEDCOLUMN"))); //$NON-NLS-1$ //$NON-NLS-2$
+            if (supportsIsAutoIncrement) {
+                introspectedColumn.setAutoIncrement("YES".equals(rs.getString("IS_AUTOINCREMENT"))); //$NON-NLS-1$ //$NON-NLS-2$
+            }
+            
+            if (supportsIsGeneratedColumn) {
+                introspectedColumn.setGeneratedColumn("YES".equals(rs.getString("IS_GENERATEDCOLUMN"))); //$NON-NLS-1$ //$NON-NLS-2$
+            }
 
             ActualTableName atn = new ActualTableName(
                     rs.getString("TABLE_CAT"), //$NON-NLS-1$

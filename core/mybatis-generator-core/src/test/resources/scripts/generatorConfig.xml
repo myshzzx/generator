@@ -27,6 +27,7 @@
     <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
     <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
     <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+    <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
 
     <connectionFactory type="DEFAULT">
       <property name="driverClass" value="org.hsqldb.jdbcDriver"/>
@@ -228,6 +229,12 @@
     </table>
     <table tableName="EnumTest">
       <columnOverride column="name" javaType="mbg.test.mb3.common.TestEnum"/>
+    </table>
+    <table tableName="IgnoreManyColumns">
+      <ignoreColumnsByRegex pattern="col.*">
+        <except column="col01"/>
+        <except column="col13"/>
+      </ignoreColumnsByRegex>
     </table>
   </context>
   

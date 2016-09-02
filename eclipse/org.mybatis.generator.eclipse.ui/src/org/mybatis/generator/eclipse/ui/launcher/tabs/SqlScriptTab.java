@@ -20,6 +20,7 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Shell;
 import org.mybatis.generator.eclipse.ui.Messages;
 
 public class SqlScriptTab extends AbstractLaunchConfigurationTab {
@@ -60,5 +61,15 @@ public class SqlScriptTab extends AbstractLaunchConfigurationTab {
     @Override
     public boolean isValid(ILaunchConfiguration launchConfig) {
         return sqlScriptComposite.isValid();
+    }
+
+    @Override
+    public void setErrorMessage(String message) {
+        super.setErrorMessage(message);
+    }
+
+    @Override
+    public Shell getShell() {
+        return super.getShell();
     }
 }

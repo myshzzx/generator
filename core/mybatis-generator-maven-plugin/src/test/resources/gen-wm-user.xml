@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+				PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+				"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 数据库驱动 -->
+	<classPathEntry
+			location="D:/alPrj/vote-wenming/wenmingprj/mgrdubbo/lib/mysql-connector-java-5.1.36.jar"/>
+	<!--<classPathEntry-->
+	<!--location="D:/alPrj/!TOOLS/mybatis-generator-core-pagesupport/ojdbc14-10.2.0.3.jar"/>-->
+
+	<!-- http://mybatis.github.io/generator/configreference/xmlconfig.html -->
+	<context id="t" targetRuntime="MyBatis3">
+
+		<property name="ignoreQualifiersAtRuntime" value="true"/>
+		<property name="DBType" value="mysql"/>
+
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+
+		<!-- 数据库配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+		                connectionURL="jdbc:mysql://mysqldb:3306/wmuserm1" userId="wmuserm1"
+		                password="wmuserm1@qw2314Vdcxza">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false"/>
+		</javaTypeResolver>
+
+		<!--  model配置 -->
+		<javaModelGenerator targetPackage="com.ai.wm.common.model.user"
+		                    targetProject="D:/alPrj/vote-wenming/wenmingprj/mgrdubbo/src">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+
+		<!-- dao配置 -->
+		<sqlMapGenerator targetPackage="sqlMap.user"
+		                 targetProject="D:/alPrj/vote-wenming/wenmingprj/mgrdubbo/config">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<!--<javaClientGenerator type="XMLMAPPER"-->
+		<javaClientGenerator type="XMLMAPPER"
+		                     targetPackage="com.ai.wm.common.dao.user"
+		                     targetProject="D:/alPrj/vote-wenming/wenmingprj/mgrdubbo/src">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+		<table tableName="WC_LEAVE_WORDS_0001" schema="wmuserm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WC_LEAVE_WORDS"/>
+		</table>
+		<table tableName="WV_ACCESSOR_0001" schema="wmuserm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WV_ACCESSOR"/>
+		</table>
+		<table tableName="WV_LEAVE_WORDS_0001" schema="wmuserm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WV_LEAVE_WORDS"/>
+		</table>
+		<table tableName="W_ACCESSOR_0001" schema="wmuserm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_ACCESSOR"/>
+		</table>
+		<!--<table tableName="W_USERS_0001" schema="wmuserm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="W_USERS"/>-->
+		<!--</table>-->
+		<!--<table tableName="W_EMAIL_USER_INDEX_0001" schema="wmuserm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="W_EMAIL_USER_INDEX"/>-->
+		<!--</table>-->
+
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+				PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+				"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 数据库驱动 -->
+	<!--<classPathEntry-->
+					<!--location="D:/alPrj/vote-wenming/wenmingprj/mgrdubbo/lib/mysql-connector-java-5.1.36.jar"/>-->
+	<classPathEntry
+					location="D:\alPrj\dbDrivers/mysql-connector-java-5.1.37.jar"/>
+
+	<!-- targetRuntime:生成代码的运行环境。由于我使用的是ibatis2所以选择Ibatis2Java5。 -->
+	<!--<context id="MySqlTables" targetRuntime="MyBatis3">-->
+	<context id="t" targetRuntime="MyBatis3">
+
+		<property name="ignoreQualifiersAtRuntime" value="true"/>
+		<property name="DBType" value="mysql"/>
+
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+
+		<!-- 数据库配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+		                connectionURL="jdbc:mysql://mysqldb:3306/wmmgrm1" userId="wmmgrm1"
+		                password="wmmgrm1@qwe23css6fxza">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false"/>
+		</javaTypeResolver>
+
+		<!--  model配置 -->
+		<javaModelGenerator targetPackage="com.ai.wm.common.model.mgr"
+		                    targetProject="D:\alPrj\vote-wenming\wenmingprj\mgrdubbo\src">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+
+		<!-- dao配置 -->
+		<sqlMapGenerator targetPackage="sqlMap.mgr"
+		                 targetProject="D:\alPrj\vote-wenming\wenmingprj\mgrdubbo\config\">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<!--<javaClientGenerator type="XMLMAPPER"-->
+		<javaClientGenerator type="XMLMAPPER"
+		                     targetPackage="com.ai.wm.common.dao.mgr"
+		                     targetProject="D:\alPrj\vote-wenming\wenmingprj\mgrdubbo\src">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+		<table tableName="TV_CANDIDATE" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="TV_CANDIDATE"/>
+		</table>
+		<table tableName="WQ_CHOOSEN" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WQ_CHOOSEN"/>
+		</table>
+		<table tableName="WQ_CHOOSEN_HISTORY" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WQ_CHOOSEN_HISTORY"/>
+		</table>
+		<table tableName="WV_CANDIDATE_COLUMN" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WV_CANDIDATE_COLUMN"/>
+		</table>
+		<table tableName="WV_CANDIDATE_TAG_REL" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WV_CANDIDATE_TAG_REL"/>
+		</table>
+		<table tableName="WV_TAG" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="WV_TAG"/>
+		</table>
+		<table tableName="W_FORM" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_FORM"/>
+		</table>
+		<table tableName="W_FORM_UPDATE_LOG" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_FORM_UPDATE_LOG"/>
+		</table>
+		<table tableName="W_GATHER_COLUMNS" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_GATHER_COLUMNS"/>
+		</table>
+		<table tableName="W_MENU" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_MENU"/>
+		</table>
+		<table tableName="W_ROLEMENU" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_ROLEMENU"/>
+		</table>
+		<table tableName="W_UPDATENUM_LOG" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_UPDATENUM_LOG"/>
+		</table>
+		<table tableName="W_USERINFO" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_USERINFO"/>
+		</table>
+		<table tableName="W_USERROLE" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_USERROLE"/>
+		</table>
+		<table tableName="W_ROLEFORM" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_ROLEFORM"/>
+		</table>
+		<table tableName="W_CANDIDATE_LIB" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_CANDIDATE_LIB"/>
+		</table>
+		<table tableName="W_CANDIDATE_LIB_COLUMNS" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="W_CANDIDATE_LIB_COLUMNS"/>
+		</table>
+		<table tableName="hist_operator" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="hist_operator"/>
+		</table>
+
+		<!--<table tableName="DIM_PROVINCE" schema="wmmgrm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="DIM_PROVINCE"/>-->
+		<!--</table>-->
+		<!--<table tableName="DIM_CITY" schema="wmmgrm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="DIM_CITY"/>-->
+		<!--</table>-->
+		<!--<table tableName="DIM_COUNTY" schema="wmmgrm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="DIM_COUNTY"/>-->
+		<!--</table>-->
+		<!--<table tableName="DIM_SENDEMAIL" schema="wmmgrm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="DIM_SENDEMAIL"/>-->
+		<!--</table>-->
+		<!--<table tableName="DIM_SENSITIVE" schema="wmmgrm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="DIM_SENSITIVE"/>-->
+		<!--</table>-->
+		<!--<table tableName="DIM_APPCONFIG" schema="wmmgrm1">-->
+			<!--<property name="ignoreQualifiersAtRuntime" value="true"/>-->
+			<!--<property name="runtimeTableName" value="DIM_APPCONFIG"/>-->
+		<!--</table>-->
+
+		<table tableName="SURVEY_BASIS_INFORMATION" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="SURVEY_BASIS_COMPONENT" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="SURVEY_REGIONAL" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="SURVEY_BASIS_COMPONENT_STATE" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="SURVEY_BASIS_RULES" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="W_ORG" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="W_USERS" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="W_SHORT_TOKEN" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+		<table tableName="WV_CANDIDATE_COLUMN_ED" schema="wmmgrm1">
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+
+	</context>
+</generatorConfiguration>

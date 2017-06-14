@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -102,25 +102,25 @@ public class InterfaceTest {
         assertTrue(interfaze.getStaticImports().contains("com.foo.StaticUtil1"));
         assertTrue(interfaze.getStaticImports().contains("com.foo.StaticUtil2"));
     }
-    
+
     @Test
     public void testInterfaceFields() {
         Interface interfaze = new Interface("foo.Bar");
         interfaze.setVisibility(JavaVisibility.PUBLIC);
-        
+
         Field field = new Field("EMPTY_STRING", FullyQualifiedJavaType.getStringInstance());
         field.setInitializationString("\"\"");
         interfaze.addField(field);
-        
+
         field = new Field("ONE", FullyQualifiedJavaType.getStringInstance());
         field.setInitializationString("\"one\"");
         interfaze.addField(field);
         
-        String expected = "package foo;" + System.lineSeparator()
-            + System.lineSeparator()
-            + "public interface Bar {" + System.lineSeparator()
-            + "    String EMPTY_STRING = \"\";" + System.lineSeparator()
-            + "    String ONE = \"one\";" + System.lineSeparator()
+        String expected = "package foo;" + System.getProperty("line.separator")
+            + System.getProperty("line.separator")
+            + "public interface Bar {" + System.getProperty("line.separator")
+            + "    String EMPTY_STRING = \"\";" + System.getProperty("line.separator")
+            + "    String ONE = \"one\";" + System.getProperty("line.separator")
             + "}";
 
         assertThat(interfaze.getFormattedContent(), is(expected));

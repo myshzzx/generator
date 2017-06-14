@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2009-2015 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -13,25 +13,26 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.mybatis.generator.eclipse.ui.content;
+package org.mybatis.generator.eclipse.ui.ant.logging;
 
-import org.eclipse.core.resources.IFile;
+public class LogException extends Exception {
 
-/**
- * This is the adapter class for files that are generator configuration files.
- * 
- * @author Jeff Butler
- */
-public class ConfigurationFileAdapter {
+    private static final long serialVersionUID = 7522435242386492002L;
 
-    private IFile baseFile;
-    
-    public ConfigurationFileAdapter(IFile baseFile) {
+    public LogException() {
         super();
-        this.baseFile = baseFile;
     }
 
-    public IFile getBaseFile() {
-        return baseFile;
+    public LogException(String message) {
+        super(message);
     }
+
+    public LogException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public LogException(Throwable cause) {
+        super(cause);
+    }
+
 }

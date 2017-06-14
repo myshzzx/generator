@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import org.mybatis.generator.api.dom.OutputUtilities;
  * @author Jeff Butler
  */
 public class InnerClass extends JavaElement {
-    
+
     /** The fields. */
     private List<Field> fields;
 
@@ -57,7 +57,7 @@ public class InnerClass extends JavaElement {
 
     /** The is abstract. */
     private boolean isAbstract;
-    
+
     /** The initialization blocks. */
     private List<InitializationBlock> initializationBlocks;
 
@@ -245,17 +245,17 @@ public class InnerClass extends JavaElement {
         sb.append("class "); //$NON-NLS-1$
         sb.append(getType().getShortName());
 
-        if(!this.getTypeParameters().isEmpty()) {
+        if (!this.getTypeParameters().isEmpty()) {
             boolean comma = false;
-            sb.append("<");
-            for (TypeParameter typeParameter: typeParameters) {
-                if(comma) {
-                    sb.append(", ");
+            sb.append("<"); //$NON-NLS-1$
+            for (TypeParameter typeParameter : typeParameters) {
+                if (comma) {
+                    sb.append(", "); //$NON-NLS-1$
                 }
                 sb.append(typeParameter.getFormattedContent(compilationUnit));
                 comma = true;
             }
-            sb.append("> ");
+            sb.append("> "); //$NON-NLS-1$
         }
 
         if (superClass != null) {
@@ -280,7 +280,7 @@ public class InnerClass extends JavaElement {
 
         sb.append(" {"); //$NON-NLS-1$
         indentLevel++;
-        
+
         Iterator<Field> fldIter = fields.iterator();
         while (fldIter.hasNext()) {
             OutputUtilities.newLine(sb);

@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2016 the original author or authors.
+ *    Copyright 2006-2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -18,9 +18,6 @@ package org.mybatis.generator.api.dom.java;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Shinichi Kozake
- */
 public class TypeParameter {
 
     private String name;
@@ -57,11 +54,11 @@ public class TypeParameter {
         sb.append(name);
         if (!extendsTypes.isEmpty()) {
 
-            sb.append(" extends ");
+            sb.append(" extends "); //$NON-NLS-1$
             boolean addAnd = false;
             for (FullyQualifiedJavaType type : extendsTypes) {
                 if (addAnd) {
-                    sb.append(" & ");
+                    sb.append(" & "); //$NON-NLS-1$
                 } else {
                     addAnd = true;
                 }

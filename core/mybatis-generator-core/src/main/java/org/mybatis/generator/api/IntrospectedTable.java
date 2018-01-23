@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2017 the original author or authors.
+ *    Copyright 2006-2018 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -51,7 +51,8 @@ public abstract class IntrospectedTable {
 
     public enum TargetRuntime {
         IBATIS2, 
-        MYBATIS3
+        MYBATIS3,
+        MYBATIS3_DSQL
     }
 
     protected enum InternalAttribute {
@@ -827,6 +828,10 @@ public abstract class IntrospectedTable {
         if (stringHasValue(tableConfiguration.getMapperName())) {
             sb.append(tableConfiguration.getMapperName());
         } else {
+            if (stringHasValue(fullyQualifiedTable.getDomainObjectSubPackage())) {
+                sb.append(fullyQualifiedTable.getDomainObjectSubPackage());
+                sb.append('.');
+            }
             sb.append(fullyQualifiedTable.getDomainObjectName());
             sb.append("Mapper"); //$NON-NLS-1$
         }
@@ -838,6 +843,10 @@ public abstract class IntrospectedTable {
         if (stringHasValue(tableConfiguration.getSqlProviderName())) {
             sb.append(tableConfiguration.getSqlProviderName());
         } else {
+            if (stringHasValue(fullyQualifiedTable.getDomainObjectSubPackage())) {
+                sb.append(fullyQualifiedTable.getDomainObjectSubPackage());
+                sb.append('.');
+            }
             sb.append(fullyQualifiedTable.getDomainObjectName());
             sb.append("SqlProvider"); //$NON-NLS-1$
         }
@@ -901,6 +910,8 @@ public abstract class IntrospectedTable {
                 if (ind != -1) {
                     sb.append('.').append(mapperName.substring(0, ind));
                 }
+            } else if (stringHasValue(fullyQualifiedTable.getDomainObjectSubPackage())) {
+                sb.append('.').append(fullyQualifiedTable.getDomainObjectSubPackage());
             }
         }
 

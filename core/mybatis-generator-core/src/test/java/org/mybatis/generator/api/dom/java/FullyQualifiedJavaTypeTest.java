@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2017 the original author or authors.
+ *    Copyright 2006-2018 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -15,16 +15,13 @@
  */
 package org.mybatis.generator.api.dom.java;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mybatis.generator.api.dom.OutputUtilities;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 
 /**
  * @author Jeff Butler
@@ -231,7 +228,7 @@ public class FullyQualifiedJavaTypeTest {
 
     @Test
     public void testImportList() {
-        Set<FullyQualifiedJavaType> types = new TreeSet<FullyQualifiedJavaType>();
+        Set<FullyQualifiedJavaType> types = new TreeSet<>();
 
         types.add(new FullyQualifiedJavaType("foo.bar.Example"));
         types.add(new FullyQualifiedJavaType("foo.bar.Example.Criteria"));

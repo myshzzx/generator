@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2017 the original author or authors.
+ *    Copyright 2006-2018 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import static org.mybatis.generator.internal.util.EqualsUtil.areEqual;
 import static org.mybatis.generator.internal.util.HashCodeUtil.SEED;
 import static org.mybatis.generator.internal.util.HashCodeUtil.hash;
 import static org.mybatis.generator.internal.util.JavaBeansUtil.getCamelCaseString;
+import static org.mybatis.generator.internal.util.JavaBeansUtil.getFirstCharacterUppercase;
 import static org.mybatis.generator.internal.util.StringUtility.composeFullyQualifiedTableName;
 import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
@@ -89,7 +90,7 @@ public class FullyQualifiedTable {
      *            obtained from the Context.
      * @param domainObjectRenamingRule
      *            If domainObjectName is not configured, we'll build the domain object named based on the tableName or runtimeTableName.
-     *            And then we use the domain object renameing rule to generate the final domain object name.
+     *            And then we use the domain object renaming rule to generate the final domain object name.
      * @param context
      *            the context
      */
@@ -221,26 +222,6 @@ public class FullyQualifiedTable {
     }
 
     /**
-     * Returns a string that is the fully qualified table name, with
-     * underscores as the separator.
-     * 
-     * @return the namespace
-     */
-    public String getIbatis2SqlMapNamespace() {
-        String localCatalog = stringHasValue(runtimeCatalog) ? runtimeCatalog
-                : introspectedCatalog;
-        String localSchema = stringHasValue(runtimeSchema) ? runtimeSchema
-                : introspectedSchema;
-        String localTable = stringHasValue(runtimeTableName) ? runtimeTableName
-                : introspectedTableName;
-
-        return composeFullyQualifiedTableName(
-                        ignoreQualifiersAtRuntime ? null : localCatalog,
-                        ignoreQualifiersAtRuntime ? null : localSchema,
-                        localTable, '_');
-    }
-
-    /**
      * Gets the domain object name.
      *
      * @return the domain object name
@@ -262,7 +243,7 @@ public class FullyQualifiedTable {
             String replaceString = domainObjectRenamingRule.getReplaceString();
             replaceString = replaceString == null ? "" : replaceString; //$NON-NLS-1$
             Matcher matcher = pattern.matcher(finalDomainObjectName);
-            finalDomainObjectName = matcher.replaceAll(replaceString);
+            finalDomainObjectName = getFirstCharacterUppercase(matcher.replaceAll(replaceString));
         }
         return finalDomainObjectName;
     }

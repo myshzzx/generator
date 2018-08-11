@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2017 the original author or authors.
+ *    Copyright 2006-2018 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -15,16 +15,13 @@
  */
 package org.mybatis.generator.api.dom.java;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.hamcrest.core.Is.*;
+import org.junit.jupiter.api.Test;
 
 public class InterfaceTest {
 
@@ -51,7 +48,7 @@ public class InterfaceTest {
     public void testAddImportedTypes() {
 
         Interface interfaze = new Interface("com.foo.UserInterface");
-        Set<FullyQualifiedJavaType> importedTypes = new HashSet<FullyQualifiedJavaType>();
+        Set<FullyQualifiedJavaType> importedTypes = new HashSet<>();
 
         FullyQualifiedJavaType arrayList = FullyQualifiedJavaType.getNewArrayListInstance();
         FullyQualifiedJavaType hashMap = FullyQualifiedJavaType.getNewHashMapInstance();
@@ -92,7 +89,7 @@ public class InterfaceTest {
     public void testAddStaticImports() {
 
         Interface interfaze = new Interface("com.foo.UserInterface");
-        Set<String> staticImports = new HashSet<String>();
+        Set<String> staticImports = new HashSet<>();
         staticImports.add("com.foo.StaticUtil1");
         staticImports.add("com.foo.StaticUtil2");
         interfaze.addStaticImports(staticImports);
@@ -123,6 +120,6 @@ public class InterfaceTest {
             + "    String ONE = \"one\";" + System.getProperty("line.separator")
             + "}";
 
-        assertThat(interfaze.getFormattedContent(), is(expected));
+        assertThat(interfaze.getFormattedContent()).isEqualTo(expected);
     }
 }

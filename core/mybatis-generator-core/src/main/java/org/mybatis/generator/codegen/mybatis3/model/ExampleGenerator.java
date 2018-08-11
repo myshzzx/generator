@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2017 the original author or authors.
+ *    Copyright 2006-2018 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -67,7 +67,11 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setConstructor(true);
         method.setName(type.getShortName());
-        method.addBodyLine("oredCriteria = new ArrayList<Criteria>();"); //$NON-NLS-1$
+        if (context.isJava8Targeted()) {
+            method.addBodyLine("oredCriteria = new ArrayList<>();"); //$NON-NLS-1$
+        } else {
+            method.addBodyLine("oredCriteria = new ArrayList<Criteria>();"); //$NON-NLS-1$
+        }
 
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
@@ -199,7 +203,7 @@ public class ExampleGenerator extends AbstractJavaGenerator {
 
         topLevelClass.addInnerClass(getCriterionInnerClass());
 
-        List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
+        List<CompilationUnit> answer = new ArrayList<>();
         if (context.getPlugins().modelExampleClassGenerated(
                 topLevelClass, introspectedTable)) {
             answer.add(topLevelClass);
@@ -391,10 +395,14 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         method.setName("GeneratedCriteria"); //$NON-NLS-1$
         method.setConstructor(true);
         method.addBodyLine("super();"); //$NON-NLS-1$
-        method.addBodyLine("criteria = new ArrayList<Criterion>();"); //$NON-NLS-1$
+        if (context.isJava8Targeted()) {
+            method.addBodyLine("criteria = new ArrayList<>();"); //$NON-NLS-1$
+        } else {
+            method.addBodyLine("criteria = new ArrayList<Criterion>();"); //$NON-NLS-1$
+        }
         answer.addMethod(method);
 
-        List<String> criteriaLists = new ArrayList<String>();
+        List<String> criteriaLists = new ArrayList<>();
         criteriaLists.add("criteria"); //$NON-NLS-1$
 
         for (IntrospectedColumn introspectedColumn : introspectedTable
@@ -452,7 +460,11 @@ public class ExampleGenerator extends AbstractJavaGenerator {
             method.addBodyLine("return criteria;"); //$NON-NLS-1$
         } else {
             method.addBodyLine("if (allCriteria == null) {"); //$NON-NLS-1$
-            method.addBodyLine("allCriteria = new ArrayList<Criterion>();"); //$NON-NLS-1$
+            if (context.isJava8Targeted()) {
+                method.addBodyLine("allCriteria = new ArrayList<>();"); //$NON-NLS-1$
+            } else {
+                method.addBodyLine("allCriteria = new ArrayList<Criterion>();"); //$NON-NLS-1$
+            }
 
             strIter = criteriaLists.iterator();
             while (strIter.hasNext()) {
@@ -581,8 +593,11 @@ public class ExampleGenerator extends AbstractJavaGenerator {
             method
                     .addBodyLine("throw new RuntimeException(\"Value list for \" + property + \" cannot be null or empty\");"); //$NON-NLS-1$
             method.addBodyLine("}"); //$NON-NLS-1$
-            method
-                    .addBodyLine("List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();"); //$NON-NLS-1$
+            if (context.isJava8Targeted()) {
+                method.addBodyLine("List<java.sql.Date> dateList = new ArrayList<>();"); //$NON-NLS-1$
+            } else {
+                method.addBodyLine("List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();"); //$NON-NLS-1$
+            }
             method.addBodyLine("Iterator<Date> iter = values.iterator();"); //$NON-NLS-1$
             method.addBodyLine("while (iter.hasNext()) {"); //$NON-NLS-1$
             method
@@ -645,8 +660,11 @@ public class ExampleGenerator extends AbstractJavaGenerator {
             method
                     .addBodyLine("throw new RuntimeException(\"Value list for \" + property + \" cannot be null or empty\");"); //$NON-NLS-1$
             method.addBodyLine("}"); //$NON-NLS-1$
-            method
-                    .addBodyLine("List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();"); //$NON-NLS-1$
+            if (context.isJava8Targeted()) {
+                method.addBodyLine("List<java.sql.Time> timeList = new ArrayList<>();"); //$NON-NLS-1$
+            } else {
+                method.addBodyLine("List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();"); //$NON-NLS-1$
+            }
             method.addBodyLine("Iterator<Date> iter = values.iterator();"); //$NON-NLS-1$
             method.addBodyLine("while (iter.hasNext()) {"); //$NON-NLS-1$
             method
@@ -988,7 +1006,11 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         // add constructor initialization
         sb.setLength(0);
         sb.append(field.getName());
-        sb.append(" = new ArrayList<Criterion>();"); //$NON-NLS-1$;
+        if (context.isJava8Targeted()) {
+            sb.append(" = new ArrayList<>();"); //$NON-NLS-1$;            
+        } else {
+            sb.append(" = new ArrayList<Criterion>();"); //$NON-NLS-1$;
+        }
         constructor.addBodyLine(sb.toString());
 
         // now add the methods for simplifying the individual field set methods

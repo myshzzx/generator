@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-       Copyright 2006-2017 the original author or authors.
+       Copyright 2006-2018 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
 
 <generatorConfiguration>
   <properties resource="scripts/database.properties"/>
-  
+
   <context id="FlatJava5" defaultModelType="flat">
     <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
     <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
@@ -48,7 +48,7 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
-    <table tableName="FieldsOnly" />
+    <table tableName="FieldsOnly" domainObjectName="subpackage.Fieldsonly"/>
     <table tableName="PKOnly" />
     <table tableName="PKFields" alias="B" >
       <columnOverride column="wierd$Field" delimitedColumnName="true"/>
@@ -207,7 +207,6 @@
 
     <javaClientGenerator type="XMLMAPPER" targetPackage="mbg.test.mb3.generated.miscellaneous.mapper"  targetProject="MAVEN">
       <property name="rootInterface" value="mbg.test.common.BaseInterface" />
-      <property name="methodNameCalculator" value="EXTENDED"/>
     </javaClientGenerator>
 
     <table tableName="BlobsOnly" /> <!-- should generate a warning -->
@@ -244,6 +243,9 @@
         <except column="col01"/>
         <except column="col13"/>
       </ignoreColumnsByRegex>
+    </table>
+    <table tableName="suffix_rename">
+      <domainObjectRenamingRule searchString="^Suffix" replaceString=""/>
     </table>
   </context>
   
@@ -385,7 +387,7 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
-    <table tableName="FieldsOnly" />
+    <table tableName="FieldsOnly" domainObjectName="subpackage.Fieldsonly"/>
     <table tableName="PKOnly" />
     <table tableName="PKFields" alias="B" >
       <columnOverride column="wierd$Field" delimitedColumnName="true"/>
@@ -520,7 +522,6 @@
 
     <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="mbg.test.mb3.generated.annotated.miscellaneous.mapper"  targetProject="MAVEN">
       <property name="rootInterface" value="mbg.test.common.BaseInterface" />
-      <property name="methodNameCalculator" value="EXTENDED"/>
     </javaClientGenerator>
 
     <table tableName="BlobsOnly" />
@@ -746,7 +747,6 @@
     
     <javaClientGenerator type="MIXEDMAPPER" targetPackage="mbg.test.mb3.generated.mixed.miscellaneous.mapper"  targetProject="MAVEN">
       <property name="rootInterface" value="mbg.test.common.BaseInterface" />
-      <property name="methodNameCalculator" value="EXTENDED"/>
     </javaClientGenerator>
 
     <table tableName="BlobsOnly" />

@@ -1,5 +1,5 @@
 --
---    Copyright 2006-2016 the original author or authors.
+--    Copyright 2006-2018 the original author or authors.
 --
 --    Licensed under the Apache License, Version 2.0 (the "License");
 --    you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ drop table BlobsOnly if exists;
 drop view NameView if exists;
 drop table RegexRename if exists;
 drop table mbgtest.AnotherAwfulTable if exists;
+drop table mbgtest.Ids if exists;
+drop table mbgtest.Translations if exists;
 drop table CompoundKey if exists;
 drop schema mbgtest if exists;
 drop table EnumTest if exists;
@@ -32,6 +34,7 @@ drop table GeneratedAlwaysTest if exists;
 drop table GeneratedAlwaysTestNoUpdates if exists;
 drop table IgnoreManyColumns if exists;
 drop sequence TestSequence if exists;
+drop table suffix_rename if exists;
 
 create sequence TestSequence as integer start with 1;
 
@@ -190,3 +193,23 @@ create table IgnoreManyColumns (
 
 comment on table EnumTest is 'This is a comment for the EnumTest table';
 comment on column EnumTest.name is 'This is a comment for the EnumTest.name column';
+
+create table suffix_rename (
+  ID integer not null,
+  NAME varchar(30),
+  ADDRESS varchar(30),
+  ZIP_CODE char(5),
+  primary key(ID)
+);
+
+create table mbgtest.Translations (
+  id integer not null,
+  translation varchar(30),
+  primary key (id)
+);
+
+create table mbgtest.Ids (
+  id integer not null,
+  description varchar(30),
+  primary key (id)
+);

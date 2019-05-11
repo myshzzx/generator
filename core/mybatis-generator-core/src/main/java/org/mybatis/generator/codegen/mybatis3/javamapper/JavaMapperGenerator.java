@@ -46,18 +46,14 @@ import org.mybatis.generator.codegen.mybatis3.javamapper.elements.UpdateByPrimar
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator;
 import org.mybatis.generator.config.PropertyRegistry;
 
-/**
- * @author Jeff Butler
- * 
- */
 public class JavaMapperGenerator extends AbstractJavaClientGenerator {
 
-    public JavaMapperGenerator() {
-        super(true);
+    public JavaMapperGenerator(String project) {
+        this(project, true);
     }
 
-    public JavaMapperGenerator(boolean requiresMatchedXMLGenerator) {
-        super(requiresMatchedXMLGenerator);
+    public JavaMapperGenerator(String project, boolean requiresMatchedXMLGenerator) {
+        super(project, requiresMatchedXMLGenerator);
     }
 
     @Override
@@ -102,8 +98,7 @@ public class JavaMapperGenerator extends AbstractJavaClientGenerator {
         addUpdateByPrimaryKeyWithoutBLOBsMethod(interfaze);
 
         List<CompilationUnit> answer = new ArrayList<>();
-        if (context.getPlugins().clientGenerated(interfaze, null,
-                introspectedTable)) {
+        if (context.getPlugins().clientGenerated(interfaze, introspectedTable)) {
             answer.add(interfaze);
         }
 

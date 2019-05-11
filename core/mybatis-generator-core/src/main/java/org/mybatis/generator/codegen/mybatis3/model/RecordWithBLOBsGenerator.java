@@ -43,8 +43,8 @@ import org.mybatis.generator.codegen.RootClassInfo;
  */
 public class RecordWithBLOBsGenerator extends AbstractJavaGenerator {
 
-    public RecordWithBLOBsGenerator() {
-        super();
+    public RecordWithBLOBsGenerator(String project) {
+        super(project);
     }
 
     @Override
@@ -117,10 +117,9 @@ public class RecordWithBLOBsGenerator extends AbstractJavaGenerator {
     }
 
     private void addParameterizedConstructor(TopLevelClass topLevelClass) {
-        Method method = new Method();
+        Method method = new Method(topLevelClass.getType().getShortName());
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setConstructor(true);
-        method.setName(topLevelClass.getType().getShortName());
         context.getCommentGenerator().addGeneralMethodComment(method, introspectedTable);
         
         for (IntrospectedColumn introspectedColumn : introspectedTable

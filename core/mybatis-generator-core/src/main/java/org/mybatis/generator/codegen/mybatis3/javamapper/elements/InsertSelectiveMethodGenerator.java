@@ -38,11 +38,11 @@ public class InsertSelectiveMethodGenerator extends
 
     @Override
     public void addInterfaceElements(Interface interfaze) {
-        Method method = new Method();
+        Method method = new Method(introspectedTable.getInsertSelectiveStatementId());
 
         method.setReturnType(FullyQualifiedJavaType.getIntInstance());
         method.setVisibility(JavaVisibility.PUBLIC);
-        method.setName(introspectedTable.getInsertSelectiveStatementId());
+        method.setAbstract(true);
 
         FullyQualifiedJavaType parameterType = introspectedTable.getRules()
                 .calculateAllFieldsClass();

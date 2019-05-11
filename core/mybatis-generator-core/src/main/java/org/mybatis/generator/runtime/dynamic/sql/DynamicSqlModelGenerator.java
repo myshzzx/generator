@@ -38,7 +38,7 @@ import org.mybatis.generator.codegen.AbstractJavaGenerator;
 import org.mybatis.generator.codegen.RootClassInfo;
 
 /**
- * This model generator builds a flat model qith default constructor and getters/setters.
+ * This model generator builds a flat model with default constructor and getters/setters.
  * It does not support the immutable model, or constructor based attributes.
  * 
  * @author Jeff Butler
@@ -46,8 +46,8 @@ import org.mybatis.generator.codegen.RootClassInfo;
  */
 public class DynamicSqlModelGenerator extends AbstractJavaGenerator {
 
-    public DynamicSqlModelGenerator() {
-        super();
+    public DynamicSqlModelGenerator(String project) {
+        super(project);
     }
 
     @Override
@@ -143,10 +143,9 @@ public class DynamicSqlModelGenerator extends AbstractJavaGenerator {
     }
 
     private void addParameterizedConstructor(TopLevelClass topLevelClass, CommentGenerator commentGenerator) {
-        Method method = new Method();
+        Method method = new Method(topLevelClass.getType().getShortName());
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setConstructor(true);
-        method.setName(topLevelClass.getType().getShortName());
         context.getCommentGenerator().addGeneralMethodComment(method,
                 introspectedTable);
         method.getJavaDocLines().clear();

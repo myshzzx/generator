@@ -44,8 +44,8 @@ import org.mybatis.generator.codegen.RootClassInfo;
  */
 public class PrimaryKeyGenerator extends AbstractJavaGenerator {
 
-    public PrimaryKeyGenerator() {
-        super();
+    public PrimaryKeyGenerator(String project) {
+        super(project);
     }
 
     @Override
@@ -63,8 +63,9 @@ public class PrimaryKeyGenerator extends AbstractJavaGenerator {
 
         String rootClass = getRootClass();
         if (rootClass != null) {
-            topLevelClass.setSuperClass(new FullyQualifiedJavaType(rootClass));
-            topLevelClass.addImportedType(topLevelClass.getSuperClass());
+            FullyQualifiedJavaType rootType = new FullyQualifiedJavaType(rootClass);
+            topLevelClass.setSuperClass(rootType);
+            topLevelClass.addImportedType(rootType);
         }
 
         if (introspectedTable.isConstructorBased()) {
@@ -118,10 +119,9 @@ public class PrimaryKeyGenerator extends AbstractJavaGenerator {
     }
 
     private void addParameterizedConstructor(TopLevelClass topLevelClass) {
-        Method method = new Method();
+        Method method = new Method(topLevelClass.getType().getShortName());
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setConstructor(true);
-        method.setName(topLevelClass.getType().getShortName());
         context.getCommentGenerator().addGeneralMethodComment(method, introspectedTable);
 
         StringBuilder sb = new StringBuilder();

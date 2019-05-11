@@ -42,7 +42,7 @@ public class InnerInterfaceTest {
     public void testAddMethod() {
 
         InnerInterface interfaze = new InnerInterface("com.foo.UserInterface");
-        Method method = new Method();
+        Method method = new Method("foo");
         interfaze.addMethod(method);
 
         assertNotNull(interfaze.getMethods());
@@ -59,35 +59,14 @@ public class InnerInterfaceTest {
     }
 
     @Test
-    public void testGetSuperClass() {
-
-        InnerInterface interfaze = new InnerInterface("com.foo.UserInterface");
-        assertNull(interfaze.getSuperClass());
-    }
-
-    @Test
     public void testAddInnerInterfaces() {
 
         InnerInterface interfaze = new InnerInterface("com.foo.UserInterface");
         InnerInterface innerInterfaze = new InnerInterface("com.foo.InnerUserInterface");
 
-        interfaze.addInnerInterfaces(innerInterfaze);
+        interfaze.addInnerInterface(innerInterfaze);
         assertNotNull(interfaze.getInnerInterfaces());
         assertEquals(interfaze.getInnerInterfaces().size(), 1);
         assertSame(interfaze.getInnerInterfaces().get(0), innerInterfaze);
-    }
-
-    @Test
-    public void testIsJavaInterface() {
-
-        InnerInterface interfaze = new InnerInterface("com.foo.UserInterface");
-        assertTrue(interfaze.isJavaInterface());
-    }
-
-    @Test
-    public void testIsJavaEnumeration() {
-
-        InnerInterface interfaze = new InnerInterface("com.foo.UserInterface");
-        assertFalse(interfaze.isJavaEnumeration());
     }
 }
